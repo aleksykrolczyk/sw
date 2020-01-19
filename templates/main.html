@@ -1,0 +1,22 @@
+{% set css_file = url_for('static', filename='css/main.css') %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %} {% endblock %}</title>
+
+</head>
+<body>
+    <h1> Parked right now: {{ no_parked }} </h1>
+    <ul>
+        {% for car in parked %}
+        <li>
+            {{ loop.counter }} - {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
