@@ -20,25 +20,28 @@
         </div>
     </div>
 
-    <div id="below-header">
-        <form action="/reset" method="get">
-            <button id="reset"> Reset </button>
-        </form>
 
-        <form action="/parked" method="post">
-            <button id="add_new"> Add new </button>
-        </form>
-    </div>
+    <div id="container">
+        <div id="below-header">
+            <form action="/reset" method="get">
+                <button id="reset"> Reset </button>
+            </form>
+
+            <form action="/parked" method="post">
+                <button id="add_new"> Add new </button>
+            </form>
+        </div>
 
 
-    <div id="parked">
-        <ul>
-            {% for car in parked %}
-            <li>
-                {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
-            </li>
-            {% endfor %}
-        </ul>
+        <div id="parked">
+            <ul>
+                {% for car in parked %}
+                <li>
+                    {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
 </body>
