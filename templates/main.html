@@ -1,15 +1,26 @@
-{% set css_file = url_for('static', filename='css/main.css') %}
-
 <!DOCTYPE html>
+
+{% set css_file = url_for('static', filename='main.css') %}
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ css_file }}">
     <title>{% block title %} {% endblock %}</title>
 
 </head>
 <body>
-    <h1> Parked right now: {{ no_parked }} </h1>
+
+    <div id="container">
+    <div id="header">
+        <div id="title">
+            Parking Simulation 5000DX
+        </div>
+        <div id="counter">
+            Parked right now: {{ no_parked }}
+        </div>
+    </div>
+
     <ul>
         {% for car in parked %}
         <li>
@@ -17,6 +28,6 @@
         </li>
         {% endfor %}
     </ul>
-
+    </div>
 </body>
 </html>

@@ -1,0 +1,28 @@
+body{
+    background-color: dimgrey;
+    color: whitesmoke;
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-size: 20px;
+    margin: 0;
+}
+
+#header{
+    height: 60px;
+    background-color: darkorange;
+    color: black;
+    text-align: left;
+    vertical-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-left: 10px;
+    margin: 0;
+}
+
+#title{
+    width: 65%;
+    display: inline-flex;
+}
+
+#counter{
+    display: inline-flex;
+}
