@@ -11,7 +11,6 @@
 </head>
 <body>
 
-    <div id="container">
     <div id="header">
         <div id="title">
             Parking Simulation 5000DX TURBO
@@ -21,13 +20,26 @@
         </div>
     </div>
 
-    <ul>
-        {% for car in parked %}
-        <li>
-            {{ loop.counter }} - {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
-        </li>
-        {% endfor %}
-    </ul>
+    <div id="below-header">
+        <form action="/reset" method="get">
+            <button id="reset"> Reset </button>
+        </form>
+
+        <form action="/parked" method="post">
+            <button id="add_new"> Add new </button>
+        </form>
     </div>
+
+
+    <div id="parked">
+        <ul>
+            {% for car in parked %}
+            <li>
+                {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </body>
 </html>

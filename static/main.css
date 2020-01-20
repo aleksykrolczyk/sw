@@ -6,10 +6,14 @@ body{
     margin: 0;
 }
 
+button:focus {
+    outline:0;
+}
+
 #header{
     height: 60px;
     background-color: darkorange;
-    color: black;
+    color: #222222;
     text-align: left;
     vertical-align: center;
     font-size: 50px;
@@ -25,4 +29,35 @@ body{
 
 #counter{
     display: inline-flex;
+}
+
+#below-header{
+    padding-top: 10px;
+}
+
+#below-header button{
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    float: right;
+    text-transform: uppercase;
+    background-color: darkorange; /* Green */
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-right: 60px;
+
+}
+
+#below-header button:hover{
+    color: white;
+}
+
+ul{
+    list-style-type: decimal;
+}
+
+#parked{
+    margin-left: 15px;
 }
