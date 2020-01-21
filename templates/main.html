@@ -7,16 +7,67 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{{ css_file }}">
     <title>{% block title %} {% endblock %}</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+
+        const fetchData = () => {
+            fetch('/parked', {
+                            method: 'GET',
+                            mode: 'no-cors',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+            }).then(response => response.json()).then(response => {
+                let parked = response.parked;
+                let no_parked = response.no_parked;
+                console.log(response);
+                {#console.log(parked);#}
+                {#console.log(no_parked);#}
+
+                updateLayout(parked);
+            }).catch(error => console.log(error));
+        };
+
+        const updateLayout = cars => {
+
+            var p = document.getElementById("counter-text");
+            p.setAttribute("text", "Parked right now" + cars.length)
+
+            var ul = document.createElement('ul');
+            ul.setAttribute('id','carList');
+
+            cars = cars.map(car => car.license + '-' + car.parked + '-' + car.place_id);
+
+            var t, tt;
+
+            document.getElementById('parked').innerHTML = '';
+            document.getElementById('parked').appendChild(ul);
+            cars.forEach(renderCarList);
+
+            function renderCarList(element, index, arr) {
+                var li = document.createElement('li');
+
+                ul.appendChild(li);
+
+                t = document.createTextNode(element);
+
+                li.innerHTML=li.innerHTML + element;
+            }
+        }
+
+        setInterval(fetchData, 2000);
+    </script>
 
 </head>
 <body>
 
     <div id="header">
         <div id="title">
-            Parking Simulation 5000DX TURBO
+            Lorem Ipsum
         </div>
         <div id="counter">
-            Parked right now: {{ no_parked }}
+            <p id="counter-text">Parked right now: {{ no_parked }}</p>
         </div>
     </div>
 
@@ -27,7 +78,7 @@
                 <button id="reset"> Reset </button>
             </form>
 
-            <form action="/parked" method="post">
+            <form action="/desktop/parked" method="post">
                 <button id="add_new"> Add new </button>
             </form>
         </div>
