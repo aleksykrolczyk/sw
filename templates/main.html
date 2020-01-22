@@ -37,7 +37,7 @@
             var ul = document.createElement('ul');
             ul.setAttribute('id','carList');
 
-            cars = cars.map(car => car.license + '-' + car.parked + '-' + car.place_id);
+            cars = cars.map(car => car.license + ' / ' + car.parked + ' /  ' + car.place_id);
 
             var t, tt;
 
@@ -88,7 +88,7 @@
             <ul>
                 {% for car in parked %}
                 <li>
-                    {{ car['license'] }} - {{ car['parked'] }} - {{ car['place_id'] }}
+                    {{ car['license'] }} / {{ car['parked'] }} / {{ car['place_id'] }}
                 </li>
                 {% endfor %}
             </ul>

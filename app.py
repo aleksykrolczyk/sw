@@ -1,7 +1,7 @@
 import sqlite3
 from .utils import dict_factory, get_random_car
 from flask import Flask, render_template, jsonify, redirect, url_for, request
-
+from datetime import datetime
 
 DB_FILE = 'cars.db'
 
@@ -48,14 +48,17 @@ def create_parked():
 
         return jsonify(data)
 
+
 @app.route('/parked/delete/<string:license_plate>', methods=['GET'])
 def delete_parked(license_plate):
     with sqlite3.connect(DB_FILE) as conn:
         conn.row_factory = dict_factory
         cur = conn.cursor()
-        cur.execute("""DELETE FROM CARS WHERE license=?""", (license_plate,))
+        left = datetime.now().replace(microsecond=0)
+        cur.execute("""UPDATE CARS SET left=? WHERE license=?""", (left, license_plate))
 
         return jsonify({'status': 'ok'})
+
 
 @app.route('/desktop/parked', methods=['POST'])
 def create_parked_desktop():
